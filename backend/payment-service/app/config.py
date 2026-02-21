@@ -7,8 +7,8 @@ class Settings(BaseSettings):
     BAKONG_SECRET_KEY: SecretStr
     ORDER_SERVICE_URL: str
 
-    # Define 'port' with alias
-    port: int = Field(default=4004, validation_alias="PORT")
+    # Use alias so Pydantic reads PORT from env
+    port: int = Field(default=4004, alias="PORT")
 
     # model_config allows the app to ignore other system variables
     model_config = SettingsConfigDict(
